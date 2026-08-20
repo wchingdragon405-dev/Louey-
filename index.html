@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO & Search Engines Tags -->
+  <title>louey's Design | تصميم فساتين سهرة فاخرة وهوت كوتور</title>
+  <meta name="description" content="دار louey's Design المتخصصة في أرقى وأفخم فساتين السهرة الفاخرة والتطريز اليدوي الهوت كوتور. تأنّقي كالملكات في كل مناسبة." />
+  <meta name="keywords" content="louey design, فساتين سهرة, فساتين فاخرة, أزياء سهرة, تصاميم فساتين, هوت كوتور, فستان سهرة ملوكي, دار أزياء" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#fcf6ba',
+              400: '#fbf5b7',
+              500: '#d4af37',
+              600: '#aa771c',
+            },
+            dark: {
+              700: '#262626',
+              800: '#171717',
+              900: '#0a0a0a',
+              950: '#050505',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Tajawal', sans-serif; background-color: #050505; color: #e5e5e5; }
+    .serif-title { font-family: 'Amiri', serif; }
+    .gold-text-gradient { 
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0a0a0a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-dark-950 text-gray-200 min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-dark-950">
+
+  <!-- شريط المالك العلوي -->
+  <div id="adminToolbar" class="hidden sticky top-0 z-50 bg-gradient-to-r from-amber-950 via-amber-900 to-amber-950 text-white text-xs py-2 px-4 shadow-lg border-b border-gold-500/40 flex justify-between items-center">
+    <div class="flex items-center gap-2 font-bold">
+      <i class="fa-solid fa-user-shield text-gold-400"></i>
+      <span data-i18n="admin_toolbar_title">وضع المالك مفعل — التغييرات تحفظ في السحابة فوراً ويراها الجميع</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="openAdminModal(true)" class="bg-dark-900 hover:bg-black text-gold-400 border border-gold-500/40 px-3 py-1 rounded transition font-medium">
+        <i class="fa-solid fa-sliders ml-1"></i> <span data-i18n="admin_settings_btn">إعدادات الموقع ورفع الصور</span>
+      </button>
+      <button onclick="logoutAdmin()" class="bg-red-950 hover:bg-red-900 border border-red-800/50 text-red-300 px-3 py-1 rounded transition">
+        <i class="fa-solid fa-right-from-bracket ml-1"></i> <span data-i18n="admin_logout_btn">تسجيل الخروج</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- خلفية نمطية ديناميكية -->
+  <div id="dynamicBgOverlay" class="fixed inset-0 z-0 opacity-20 pointer-events-none bg-cover bg-center transition-all duration-700"></div>
+  <div class="fixed inset-0 z-0 opacity-25 pointer-events-none bg-[radial-gradient(#ca8a04_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+  <!-- الهيدر -->
+  <header class="sticky top-0 z-40 bg-dark-900/90 backdrop-blur-md border-b border-gold-600/20 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex items-center space-x-3 space-x-reverse">
+          <i class="fa-solid fa-crown text-gold-400 text-2xl"></i>
+          <span id="siteBrand" class="serif-title text-2xl md:text-3xl font-bold gold-text-gradient tracking-wide cursor-pointer" onclick="scrollToTop()">louey's Design</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 space-x-reverse text-sm font-medium">
+          <a href="#hero" data-i18n="nav_home" class="text-gray-300 hover:text-gold-400 transition">الرئيسية</a>
+          <a href="#gallery" data-i18n="nav_gallery" class="text-gray-300 hover:text-gold-400 transition">المعرض الشامل</a>
+          <a href="#features" data-i18n="nav_features" class="text-gray-300 hover:text-gold-400 transition">مميزات الدار</a>
+          <a href="#about" data-i18n="nav_about" class="text-gray-300 hover:text-gold-400 transition">عن الدار</a>
+          <a href="#contact" data-i18n="nav_contact" class="text-gray-300 hover:text-gold-400 transition">تواصل معنا</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button onclick="shareWebsiteLink()" class="text-xs bg-dark-800 hover:bg-gold-600/20 text-gold-400 px-3 py-1.5 rounded-full border border-gold-600/30 transition flex items-center gap-1">
+            <i class="fa-solid fa-share-nodes"></i> <span data-i18n="btn_share" class="hidden sm:inline">مشاركة الرابط</span>
+          </button>
+
+          <div class="flex items-center bg-dark-800 border border-dark-700 rounded-full p-1 text-xs">
+            <button onclick="setLanguage('ar')" id="lang-ar" class="px-2.5 py-1 rounded-full text-gold-400 font-bold transition">AR</button>
+            <button onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 rounded-full text-gray-400 transition">EN</button>
+            <button onclick="setLanguage('tr')" id="lang-tr" class="px-2.5 py-1 rounded-full text-gray-400 transition">TR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي (Hero) -->
+  <section id="hero" class="relative z-10 pt-16 pb-12 md:pt-20 md:pb-16 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 text-center relative">
+      <div class="inline-block mb-4">
+        <span data-i18n="hero_tag" class="text-gold-400 text-xs md:text-sm tracking-widest uppercase font-semibold border-b border-gold-500/40 pb-1 px-4">دار أزياء فساتين السهرة الفاخرة</span>
+      </div>
+      <h1 id="heroTitle" class="serif-title text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-md">louey's Design</h1>
+      <p id="heroSubtitle" data-i18n="hero_subtitle" class="text-lg sm:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed italic border-x border-gold-500/20 px-6 py-2">"تأنّقي كالملكات.. تصميم يلامس روحك ويبرز جمالك الساحر في كل مناسبة."</p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#gallery" class="w-full sm:w-auto bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-dark-950 font-bold px-8 py-3.5 rounded-full shadow-lg shadow-gold-600/20 hover:from-gold-500 hover:to-gold-400 transform hover:-translate-y-0.5 transition duration-300 text-sm">
+          <i class="fa-solid fa-gem ml-2"></i> <span data-i18n="btn_explore">استعرضي المعرض الشامل الآن</span>
+        </a>
+        <a id="designerConsultationBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-green-950/80 hover:bg-green-900 text-green-400 border border-green-600/40 font-bold px-8 py-3.5 rounded-full transition duration-300 text-sm flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="btn_consultation">استشارة خاصة وحجز مقاسات عبر الواتساب</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- شريط التواصل السريع -->
+  <section class="relative z-10 border-y border-dark-800 bg-dark-900/60 py-6">
+    <div class="max-w-4xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+      <a id="featureCustomSizeBtn" href="#" target="_blank" class="p-4 bg-dark-950/80 rounded-2xl border border-gold-600/30 hover:border-gold-500 hover:-translate-y-1 transition group shadow-lg flex flex-col items-center">
+        <div class="w-12 h-12 bg-gold-600/10 text-gold-400 rounded-full flex items-center justify-center text-xl mb-2 border border-gold-500/30 group-hover:scale-110 transition">
+          <i class="fa-solid fa-ruler-combined"></i>
+        </div>
+        <h4 data-i18n="feat_custom_size_title" class="text-lg font-bold text-white group-hover:text-gold-400 transition">تفصيل حسب المقاس الخاص</h4>
+        <p data-i18n="feat_custom_size_desc" class="text-xs text-gray-400 mt-1">اضغطي هنا لحجز مقاساتك بدقة والتواصل مع الخياط مباشرة عبر الواتساب</p>
+        <span data-i18n="click_to_wa" class="inline-block mt-2 text-[11px] text-green-400 font-bold"><i class="fa-brands fa-whatsapp text-sm ml-1"></i> تواصل عبر الواتساب</span>
+      </a>
+
+      <a id="featureConsultationBtn" href="#" target="_blank" class="p-4 bg-dark-950/80 rounded-2xl border border-gold-600/30 hover:border-gold-500 hover:-translate-y-1 transition group shadow-lg flex flex-col items-center">
+        <div class="w-12 h-12 bg-gold-600/10 text-gold-400 rounded-full flex items-center justify-center text-xl mb-2 border border-gold-500/30 group-hover:scale-110 transition">
+          <i class="fa-solid fa-comments"></i>
+        </div>
+        <h4 data-i18n="feat_consultation_title" class="text-lg font-bold text-white group-hover:text-gold-400 transition">استشارة أزياء خاصة</h4>
+        <p data-i18n="feat_consultation_desc" class="text-xs text-gray-400 mt-1">احصلي على استشارة مخصصة لاختيار الفستان الأنسب لمناسبتك عبر الواتساب</p>
+        <span data-i18n="click_to_wa" class="inline-block mt-2 text-[11px] text-green-400 font-bold"><i class="fa-brands fa-whatsapp text-sm ml-1"></i> تواصل عبر الواتساب</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- المعرض الشامل الفاخر (Mega Gallery) -->
+  <main id="gallery" class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+    <div class="text-center mb-8">
+      <h2 data-i18n="section_gallery_title" class="serif-title text-3xl sm:text-5xl font-bold text-white mb-3">المعرض الشامل والقطع الحصرية</h2>
+      <p data-i18n="section_gallery_desc" class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto">تصفحي مئات القطع المصممة بأعلى معايير الهوت كوتور. اضغطي على أي قطعة لمعاينة كافة الصور والتطريز عن قرب.</p>
+      <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+    </div>
+
+    <div id="quickAddDressBtn" class="hidden mb-8 text-center">
+      <button onclick="openAdminModal(true)" class="bg-gold-600/20 hover:bg-gold-600/30 text-gold-400 border border-gold-500/50 font-bold px-6 py-2.5 rounded-full text-xs transition inline-flex items-center gap-2 shadow-lg">
+        <i class="fa-solid fa-plus-circle text-base"></i> <span data-i18n="btn_add_dress_quick">إضافة فستان جديد أو رفع مئات الصور جملة</span>
+      </button>
+    </div>
+
+    <!-- شبكة عرض الفساتين -->
+    <div id="dressesGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-6"></div>
+    
+    <div id="noResultsMsg" class="hidden text-center py-16">
+      <i class="fa-solid fa-box-open text-gray-600 text-4xl mb-3"></i>
+      <p data-i18n="no_results" class="text-sm text-gray-400">لا توجد أي فساتين معروضة حالياً.</p>
+    </div>
+  </main>
+
+  <!-- مميزات الدار -->
+  <section id="features" class="relative z-10 bg-dark-900/60 border-y border-dark-800 py-16">
+    <div class="max-w-7xl mx-auto px-4 space-y-12">
+      <div class="text-center">
+        <h3 data-i18n="why_choose_title" class="serif-title text-3xl font-bold text-white">لماذا تختارين louey's Design؟</h3>
+        <p data-i18n="why_choose_subtitle" class="text-xs text-gray-400 mt-2">نهتم بأدق التفاصيل لتكوني أيقونة الجمال في كل مناسبة</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-dark-950 p-6 rounded-2xl border border-dark-800 space-y-3">
+          <div class="w-12 h-12 bg-gold-600/10 text-gold-400 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-gem"></i></div>
+          <h4 data-i18n="why_card1_title" class="text-lg font-bold text-white">أقمشة ومواد فاخرة</h4>
+          <p data-i18n="why_card1_desc" class="text-xs text-gray-400 leading-relaxed">نستورد الحرير الطبيعي، الدانتيل الفرنسي، والمخمل الملكي من أفضل الموردين العالميين ضماناً للمس المتميز والرقي.</p>
+        </div>
+        <div class="bg-dark-950 p-6 rounded-2xl border border-dark-800 space-y-3">
+          <div class="w-12 h-12 bg-gold-600/10 text-gold-400 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h4 data-i18n="why_card2_title" class="text-lg font-bold text-white">تعديلات خاصة واستشارة</h4>
+          <p data-i18n="why_card2_desc" class="text-xs text-gray-400 leading-relaxed">فريقنا المصمم متواجد لتقديم الاستشارة وتعديل الفستان ليكون مناسباً لشكلك ومقاسك بالضبط عبر الواتساب.</p>
+        </div>
+        <div class="bg-dark-950 p-6 rounded-2xl border border-dark-800 space-y-3">
+          <div class="w-12 h-12 bg-gold-600/10 text-gold-400 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-box-open"></i></div>
+          <h4 data-i18n="why_card3_title" class="text-lg font-bold text-white">تغليف ملوكي آمن</h4>
+          <p data-i18n="why_card3_desc" class="text-xs text-gray-400 leading-relaxed">يصلك الفستان داخل صندوق فاخر مع حماية كاملة للتطريز لتستلميه كهدية ملكية تليق بك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- عن الدار -->
+  <section id="about" class="relative z-10 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+      <h3 data-i18n="about_title" class="serif-title text-3xl font-bold gold-text-gradient">عن دار louey's Design</h3>
+      <p data-i18n="about_desc" class="text-gray-300 text-sm md:text-base leading-relaxed max-w-3xl mx-auto">
+        نحن في دار <strong>louey's Design</strong> نؤمن بأن كل امرأة هي قطعة فنية مميزة تستحق تصميماً يُبرز فخامتها وأنوثتها. نبتكر أزياء السهرة بحرفية عالية ودقة متناهية بالاعتماد على أفضل أنواع الأقمشة العالمية والتطريز اليدوي الفاخر.
+      </p>
+    </div>
+  </section>
+
+  <!-- التذييل -->
+  <footer id="contact" class="relative z-10 bg-dark-900 border-t border-dark-800 text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-4 text-center space-y-6">
+      <div class="flex items-center justify-center space-x-2 space-x-reverse cursor-pointer select-none" onclick="handleSecretClick()">
+        <i class="fa-solid fa-crown text-gold-400"></i>
+        <span id="secretTriggerBrand" class="serif-title text-2xl font-bold gold-text-gradient hover:opacity-90">louey's Design</span>
+      </div>
+      <p class="text-xs text-gray-500"><span data-i18n="footer_rights">جميع الحقوق محفوظة &copy;</span> <span id="year"></span> | louey's Design</p>
+
+      <div class="flex justify-center space-x-6 space-x-reverse text-gold-400 pt-2">
+        <a id="socialInstagram" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-gold-300 transition text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a id="socialFacebook" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-gold-300 transition text-2xl" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a id="socialWhatsapp" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-gold-300 transition text-2xl" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- نافذة تفاصيل الفستان -->
+  <div id="dressDetailModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+    <div class="bg-dark-900 border border-gold-600/40 rounded-2xl max-w-4xl w-full relative shadow-2xl overflow-hidden my-auto max-h-[95vh] flex flex-col md:flex-row">
+      <button onclick="closeDressDetailModal()" class="absolute top-4 left-4 z-20 bg-dark-950/80 text-gray-400 hover:text-white p-2 rounded-full border border-gold-500/30 text-lg transition"><i class="fa-solid fa-xmark"></i></button>
+
+      <!-- حاوي الصور المحسّن بالكامل -->
+      <div class="md:w-1/2 bg-black/60 p-4 flex flex-col justify-between border-b md:border-b-0 md:border-l border-dark-800">
+        <div class="relative h-80 md:h-[450px] w-full rounded-xl overflow-hidden mb-3 bg-dark-950 flex items-center justify-center border border-dark-800">
+          <img id="modalMainImg" src="" alt="صورة الفستان" class="max-h-full max-w-full object-contain transition duration-500">
+          <span id="modalDetailPrice" class="absolute top-3 right-3 bg-dark-950/90 backdrop-blur-md text-gold-400 font-bold px-3 py-1 rounded-full text-xs border border-gold-500/40 shadow-lg"></span>
+        </div>
+        <!-- الصور المصغرة -->
+        <div id="modalThumbnails" class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar justify-start"></div>
+      </div>
+
+      <div class="md:w-1/2 p-6 flex flex-col justify-between space-y-4 overflow-y-auto custom-scrollbar">
+        <div>
+          <span data-i18n="tag_exclusive" class="text-[10px] text-gold-400 font-semibold tracking-widest uppercase border-b border-gold-500/30 pb-0.5">تصميم حصري</span>
+          <h3 id="modalDetailTitle" class="serif-title text-2xl md:text-3xl font-bold text-white mt-2"></h3>
+          <p id="modalDetailDesc" class="text-xs text-gray-400 leading-relaxed mt-3"></p>
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-xs text-gold-400 font-bold"><i class="fa-solid fa-ruler-vertical ml-1"></i> <span data-i18n="label_choose_size">اختاري المقاس المناسب:</span></label>
+          <div class="flex flex-wrap gap-2 text-xs" id="sizeSelector">
+            <button type="button" onclick="selectSize('XS', this)" class="size-btn px-3 py-1.5 rounded-lg border border-dark-700 bg-dark-950 text-gray-300 hover:border-gold-500">XS</button>
+            <button type="button" onclick="selectSize('S', this)" class="size-btn px-3 py-1.5 rounded-lg border border-dark-700 bg-dark-950 text-gray-300 hover:border-gold-500">S</button>
+            <button type="button" onclick="selectSize('M', this)" class="size-btn px-3 py-1.5 rounded-lg border border-gold-500 bg-gold-600/20 text-gold-400 font-bold">M</button>
+            <button type="button" onclick="selectSize('L', this)" class="size-btn px-3 py-1.5 rounded-lg border border-dark-700 bg-dark-950 text-gray-300 hover:border-gold-500">L</button>
+            <button type="button" onclick="selectSize('XL', this)" class="size-btn px-3 py-1.5 rounded-lg border border-dark-700 bg-dark-950 text-gray-300 hover:border-gold-500">XL</button>
+            <button type="button" onclick="selectSize('مقاس خاص', this)" class="size-btn px-3 py-1.5 rounded-lg border border-dark-700 bg-dark-950 text-gray-300 hover:border-gold-500" data-i18n="size_custom">مقاس خاص</button>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-xs text-gold-400 font-bold"><i class="fa-solid fa-palette ml-1"></i> <span data-i18n="label_color">اللون المختار:</span></label>
+          <div id="colorSelector" class="flex gap-2 text-xs">
+            <span data-i18n="color_original" class="px-3 py-1 bg-dark-950 rounded-lg border border-gold-500/40 text-gray-200">اللون الأصلي كما بالصورة</span>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-dark-800 space-y-3">
+          <button onclick="proceedToPaymentFromDetail()" class="w-full bg-gradient-to-r from-gold-600 to-gold-500 text-dark-950 font-bold py-3 rounded-xl hover:from-gold-500 hover:to-gold-400 transition text-sm flex items-center justify-center gap-2 shadow-lg">
+            <i class="fa-solid fa-credit-card"></i> <span data-i18n="btn_proceed_order">الانتقال لإتمام الطلب والتحويل</span>
+          </button>
+          <a id="modalDetailWaBtn" href="#" target="_blank" class="block w-full text-center bg-green-950/80 hover:bg-green-900 text-green-400 border border-green-600/40 font-bold py-2.5 rounded-xl transition text-xs">
+            <i class="fa-brands fa-whatsapp text-sm ml-1"></i> <span data-i18n="btn_consult_wa_modal">استشارة المصمم مباشرة حول هذا الفستان</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- نافذة الدفع -->
+  <div id="paymentModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-dark-900 border border-gold-600/40 rounded-2xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl">
+      <button onclick="closePaymentModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 bg-gold-600/10 text-gold-400 rounded-full flex items-center justify-center mx-auto text-xl border border-gold-500/30 mb-3">
+          <i class="fa-solid fa-building-columns"></i>
+        </div>
+        <h3 data-i18n="modal_payment_title" class="serif-title text-2xl font-bold text-white">إتمام طلب الفستان</h3>
+        <p id="modalDressTitle" class="text-gold-400 text-sm font-semibold mt-1"></p>
+        <p id="selectedSizeDisplay" class="text-xs text-gray-400 mt-0.5"></p>
+        <div class="mt-2 inline-block bg-dark-800 px-4 py-1 rounded-full border border-gold-500/30">
+          <span data-i18n="price_label" class="text-xs text-gray-400">السعر:</span>
+          <span id="modalDressPrice" class="text-gold-400 font-bold ml-1"></span> <span class="text-xs text-gold-400">USD $</span>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-dark-950 p-4 rounded-xl border border-gold-600/30 space-y-3">
+          <p data-i18n="iban_msg" class="text-xs text-gray-400">يرجى تحويل المبلغ بالدولار الأمريكي (USD) إلى حساب الآيبان الخاص بالدار:</p>
+          
+          <div class="flex items-center justify-between bg-dark-900 p-3 rounded-lg border border-dark-700">
+            <span id="displayIban" class="font-mono text-xs sm:text-sm text-gold-400 font-bold tracking-wider"></span>
+            <button onclick="copyIban()" class="text-xs bg-gold-600/20 text-gold-400 hover:bg-gold-600/40 px-3 py-1.5 rounded transition flex items-center gap-1">
+              <i class="fa-regular fa-copy"></i> <span data-i18n="btn_copy">نسخ</span>
+            </button>
+          </div>
+
+          <div class="flex justify-between items-center text-xs pt-1 border-t border-dark-800">
+            <span data-i18n="required_amount" class="text-gray-400">المبلغ المطلوب للتحويل:</span>
+            <span class="text-gold-400 font-bold"><span id="ibanDressPrice"></span> USD $</span>
+          </div>
+        </div>
+
+        <a id="whatsappIbanBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-md">
+          <i class="fa-brands fa-whatsapp text-lg ml-1"></i> <span data-i18n="btn_confirm_wa">تأكيد الطلب وإرسال التحويل عبر الواتساب</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- لوحة تحكم المالك السحابية -->
+  <div id="adminModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-dark-900 border border-gold-500/50 rounded-2xl p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar relative shadow-2xl">
+      <button onclick="closeAdminModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+
+      <!-- تسجيل الدخول -->
+      <div id="adminLoginView" class="py-10 text-center space-y-4">
+        <div class="w-16 h-16 bg-gold-600/10 text-gold-400 rounded-full flex items-center justify-center mx-auto text-2xl border border-gold-500/30"><i class="fa-solid fa-user-shield"></i></div>
+        <h3 class="serif-title text-2xl font-bold text-white">تسجيل دخول المالك</h3>
+        <p class="text-xs text-gray-400">أدخل كلمة السر الخاصة للوصول إلى لوحة التحكم السحابية.</p>
+
+        <form id="adminLoginForm" class="max-w-xs mx-auto space-y-3 pt-2" onsubmit="handleAdminLogin(event)">
+          <input id="adminPassInput" type="password" placeholder="كلمة السر" required class="w-full bg-dark-950 border border-dark-700 rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-gold-500 text-sm text-center">
+          <button type="submit" class="w-full bg-gold-500 text-dark-950 font-bold py-2.5 rounded-lg hover:bg-gold-400 transition text-sm">تسجيل الدخول</button>
+          <p id="adminErrorMsg" class="text-xs text-red-500 hidden font-bold">كلمة السر غير صحيحة!</p>
+        </form>
+      </div>
+
+      <!-- واجهة الداشبورد -->
+      <div id="adminDashboardView" class="hidden space-y-6">
+        <div class="flex justify-between items-center border-b border-dark-700 pb-4">
+          <div>
+            <h3 class="serif-title text-xl font-bold text-gold-400">لوحة تحكم المالك السحابية - louey's Design</h3>
+            <p class="text-xs text-gray-400">أي إضافة هنا ستظهر لجميع الأجهزة تلقائياً ولحظياً.</p>
+          </div>
+          <button onclick="logoutAdmin()" class="text-xs bg-red-950/80 border border-red-800/40 text-red-400 hover:bg-red-900 px-3 py-1.5 rounded transition">تسجيل الخروج</button>
+        </div>
+
+        <!-- أداة رفع الصور جملة للسحابة مع الضغط التلقائي -->
+        <div class="bg-gradient-to-r from-dark-950 via-amber-950/30 to-dark-950 p-5 rounded-xl border border-gold-500/40 space-y-4">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-bolt text-gold-400 text-lg"></i>
+            <p class="text-xs font-bold text-gold-400">أداة الرفع السريعة المحسّنة (مع ضغط تلقائي وتصغير الحجم):</p>
+          </div>
+          <p class="text-[11px] text-gray-400">اختر أياً من صورك (حتى لو كانت بأعلى جودة من الكاميرا) وسيقوم النظام بضغط حجمها فوراً لتصبح خفيفة جداً ومناسبة للرفع بدون أي تعليق!</p>
+          
+          <label class="cursor-pointer bg-gradient-to-r from-gold-600 to-gold-500 text-dark-950 font-bold text-xs py-3 px-6 rounded-xl block text-center shadow-lg hover:brightness-110 transition">
+            <i class="fa-solid fa-cloud-arrow-up text-base ml-1"></i> اختيار ورفع مئات الصور فوراً
+            <input type="file" id="bulkImagesInput" accept="image/*" multiple class="hidden" onchange="handleBulkImagesUpload(event)">
+          </label>
+          <div id="uploadStatusText" class="text-xs text-center font-bold text-gold-400 hidden animate-pulse"></div>
+        </div>
+
+        <!-- إضافة فستان واحد -->
+        <div class="bg-dark-950 p-4 rounded-xl border border-dark-800 space-y-4">
+          <p class="text-xs font-bold text-gold-400 flex items-center gap-1"><i class="fa-solid fa-plus-circle"></i> إضافة فستان محدد بالتفصيل للسحابة:</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input id="newDressNameAr" type="text" placeholder="اسم الفستان (عربي)" class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white">
+            <input id="newDressNameEn" type="text" placeholder="Dress Name (English)" class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white">
+            <input id="newDressNameTr" type="text" placeholder="Elbise Adı (Türkçe)" class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white">
+          </div>
+
+          <div class="grid grid-cols-1 gap-2">
+            <input id="newDressPrice" type="number" placeholder="السعر بالدولار ($ USD)" class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <textarea id="newDressDescAr" placeholder="الوصف (عربي)..." class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white h-16"></textarea>
+            <textarea id="newDressDescEn" placeholder="Description (English)..." class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white h-16"></textarea>
+            <textarea id="newDressDescTr" placeholder="Açıklama (Türkçe)..." class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white h-16"></textarea>
+          </div>
+          
+          <div class="space-y-2">
+            <label class="block text-xs text-gray-400">صور هذا الفستان (تُضغط وتصغّر تلقائياً لتجنب مشاكل الرفع):</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <label class="cursor-pointer bg-dark-800 hover:bg-dark-700 text-gold-400 border border-gold-600/30 text-xs px-3 py-2 rounded font-bold flex items-center justify-center gap-2">
+                <i class="fa-solid fa-images"></i> اختيار صور الفستان
+                <input type="file" id="newDressFileInput" accept="image/*" multiple class="hidden" onchange="handleDressMultiFilesSelect(event)">
+              </label>
+              <input id="newDressImage" type="text" placeholder="أو رابط الصورة الرئيسية (URL)" class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white">
+            </div>
+            <p id="selectedFileName" class="text-[10px] text-green-400 mt-1"></p>
+          </div>
+
+          <button id="addSingleDressBtn" onclick="addNewDress()" class="w-full bg-gold-600 hover:bg-gold-500 text-dark-950 text-xs font-bold py-2.5 rounded transition shadow flex items-center justify-center gap-1">
+            <i class="fa-solid fa-cloud-arrow-up ml-1"></i> <span>إرسال وحفظ سحابي</span>
+          </button>
+        </div>
+
+        <!-- تغيير كلمة السر -->
+        <div class="bg-dark-950 p-4 rounded-xl border border-dark-800 space-y-3">
+          <p class="text-xs font-bold text-gold-400 flex items-center gap-1"><i class="fa-solid fa-key"></i> تغيير كلمة سر المالك السحابية:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <input id="oldPasswordInput" type="password" placeholder="كلمة السر الحالية" class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white">
+            <input id="newPasswordInput" type="password" placeholder="كلمة السر الجديدة" class="bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white">
+          </div>
+          <button onclick="changeAdminPassword()" class="bg-gold-600 hover:bg-gold-500 text-dark-950 text-xs font-bold px-4 py-2 rounded transition shadow">
+            تحديث كلمة السر بالسحابة
+          </button>
+        </div>
+
+        <!-- إعدادات الموقع العامة -->
+        <div class="bg-dark-950 p-4 rounded-xl border border-dark-800 space-y-4">
+          <p class="text-xs font-bold text-gold-400 flex items-center gap-1"><i class="fa-solid fa-gear"></i> الإعدادات العامة للجميع:</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="block text-xs text-gray-400 mb-1">اسم الموقع/الدار</label><input id="settingSiteTitle" type="text" class="w-full bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white"></div>
+            <div><label class="block text-xs text-gray-400 mb-1">رقم IBAN للتحويلات</label><input id="settingIban" type="text" class="w-full bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white"></div>
+          </div>
+          <div><label class="block text-xs text-gray-400 mb-1">عبارة الترحيب في الرئيسية</label><input id="settingSubtitle" type="text" class="w-full bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white"></div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div><label class="block text-xs text-gray-400 mb-1"><i class="fab fa-whatsapp text-green-500"></i> رقم الواتساب</label><input id="settingWhatsapp" type="text" class="w-full bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white"></div>
+            <div><label class="block text-xs text-gray-400 mb-1"><i class="fab fa-instagram text-pink-500"></i> رابط انستغرام</label><input id="settingInstagram" type="text" class="w-full bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white"></div>
+            <div><label class="block text-xs text-gray-400 mb-1"><i class="fab fa-facebook text-blue-500"></i> رابط فيسبوك</label><input id="settingFacebook" type="text" class="w-full bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white"></div>
+          </div>
+
+          <div>
+            <label class="block text-xs text-gray-400 mb-1">صورة خلفية الموقع:</label>
+            <div class="flex gap-2">
+              <input id="settingBgUrl" type="text" class="w-full bg-dark-900 border border-dark-700 rounded px-3 py-2 text-xs text-white" placeholder="https://...">
+              <label class="cursor-pointer bg-dark-800 hover:bg-dark-700 text-gold-400 border border-gold-600/30 text-xs px-3 py-2 rounded font-bold whitespace-nowrap">
+                رفع خلفية <input type="file" accept="image/*" class="hidden" onchange="handleBgFileUpload(event)">
+              </label>
+            </div>
+          </div>
+
+          <button onclick="saveGeneralSettings()" class="bg-gold-600 hover:bg-gold-500 text-dark-950 text-xs font-bold px-5 py-2 rounded transition shadow">حفظ سحابي عام</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Cloud Engine Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithCustomToken, 
+      signInAnonymously, 
+      onAuthStateChanged 
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { 
+      getFirestore, 
+      collection, 
+      doc, 
+      setDoc, 
+      deleteDoc, 
+      onSnapshot 
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // 1. Firebase Cloud Setup
+    const firebaseConfig = typeof __firebase_config !== 'undefined' 
+      ? JSON.parse(__firebase_config) 
+      : {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
+
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'louey-design-app';
+
+    // 2. Initialize Services
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Global Cloud State
+    window.db = db;
+    window.appId = appId;
+    window.currentUser = null;
+
+    window.appData = {
+      siteTitle: "louey's Design",
+      subtitle: "تأنّقي كالملكات.. تصميم يلامس روحك ويبرز جمالك الساحر في كل مناسبة.",
+      iban: "SA8220000000123456789012",
+      whatsapp: "905000000000",
+      instagram: "https://instagram.com",
+      facebook: "https://facebook.com",
+      bgUrl: "",
+      dresses: []
+    };
+    window.savedPass = 'admin1234';
+
+    // 3. Auth & Sync Engine
+    async function initCloudAuth() {
+      try {
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+      } catch (e) {
+        console.error("Cloud Auth Error:", e);
+      }
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.currentUser = user;
+        startCloudSync();
+      }
+    });
+
+    // 4. Realtime Cloud Sync
+    function startCloudSync() {
+      if (!window.currentUser) return;
+
+      const settingsDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'site_config', 'main_config');
+      onSnapshot(settingsDocRef, (snap) => {
+        if (snap.exists()) {
+          const data = snap.data();
+          if (data.siteTitle) window.appData.siteTitle = data.siteTitle;
+          if (data.subtitle) window.appData.subtitle = data.subtitle;
+          if (data.iban) window.appData.iban = data.iban;
+          if (data.whatsapp) window.appData.whatsapp = data.whatsapp;
+          if (data.instagram) window.appData.instagram = data.instagram;
+          if (data.facebook) window.appData.facebook = data.facebook;
+          if (data.bgUrl) window.appData.bgUrl = data.bgUrl;
+          if (data.adminPass) window.savedPass = data.adminPass;
+        }
+        window.renderData();
+      }, (err) => console.error("Error syncing settings:", err));
+
+      const dressesColRef = collection(db, 'artifacts', appId, 'public', 'data', 'dresses');
+      onSnapshot(dressesColRef, (snap) => {
+        const cloudDresses = [];
+        snap.forEach((docSnap) => {
+          cloudDresses.push({ id: docSnap.id, ...docSnap.data() });
+        });
+
+        cloudDresses.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        window.appData.dresses = cloudDresses;
+        window.renderData();
+      }, (err) => console.error("Error syncing dresses:", err));
+    }
+
+    initCloudAuth();
+  </script>
+
+  <!-- التطبيقات والواجهة -->
+  <script>
+    let currentLang = 'ar';
+    let selectedDress = null;
+    let selectedSize = "M";
+    let adminLoggedIn = false;
+    let tempDressImagesBase64 = [];
+
+    // محرك ضغط وتصغير الصور التلقائي (يحل مشكلة بطء وحجم الصور الكبيرة تماماً)
+    function compressImageFile(file, maxWidth = 900, maxHeight = 1200, quality = 0.65) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+              if (width > maxWidth) {
+                height = Math.round((height * maxWidth) / width);
+                width = maxWidth;
+              }
+            } else {
+              if (height > maxHeight) {
+                width = Math.round((width * maxHeight) / height);
+                height = maxHeight;
+              }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+            resolve(compressedBase64);
+          };
+          img.onerror = reject;
+          img.src = e.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    const i18nData = {
+      ar: {
+        nav_home: "الرئيسية", nav_gallery: "المعرض الشامل", nav_features: "مميزات الدار", nav_about: "عن الدار", nav_contact: "تواصل معنا",
+        btn_share: "مشاركة الرابط", hero_tag: "دار أزياء فساتين السهرة الفاخرة", hero_subtitle: '"تأنّقي كالملكات.. تصميم يلامس روحك ويبرز جمالك الساحر في كل مناسبة."',
+        btn_explore: "استعرضي المعرض الشامل الآن", btn_consultation: "استشارة خاصة وحجز مقاسات عبر الواتساب",
+        feat_custom_size_title: "تفصيل حسب المقاس الخاص", feat_custom_size_desc: "اضغطي هنا لحجز مقاساتك بدقة والتواصل مع الخياط مباشرة عبر الواتساب",
+        feat_consultation_title: "استشارة أزياء خاصة", feat_consultation_desc: "احصلي على استشارة مخصصة لاختيار الفستان الأنسب لمناسبتك عبر الواتساب",
+        click_to_wa: "تواصل عبر الواتساب", section_gallery_title: "المعرض الشامل والقطع الحصرية",
+        section_gallery_desc: "تصفحي مئات القطع المصممة بأعلى معايير الهوت كوتور. اضغطي على أي قطعة لمعاينة كافة الصور والتطريز عن قرب.",
+        btn_add_dress_quick: "إضافة فستان جديد أو رفع مئات الصور جملة", btn_view_details: "مشاهدة التفاصيل والصور",
+        why_choose_title: "لماذا تختارين louey's Design؟", why_choose_subtitle: "نهتم بأدق التفاصيل لتكوني أيقونة الجمال في كل مناسبة",
+        why_card1_title: "أقمشة ومواد فاخرة", why_card1_desc: "نستورد الحرير الطبيعي، الدانتيل الفرنسي، والمخمل الملكي من أفضل الموردين العالميين.",
+        why_card2_title: "تعديلات خاصة واستشارة", why_card2_desc: "فريقنا المصمم متواجد لتقديم الاستشارة وتعديل الفستان ليكون مناسباً لشكلك ومقاسك بالضبط عبر الواتساب.",
+        why_card3_title: "تغليف ملوكي آمن", why_card3_desc: "يصلك الفستان داخل صندوق فاخر مع حماية كاملة للتطريز لتستلميه كهدية ملكية تليق بك.",
+        about_title: "عن دار louey's Design", about_desc: "نحن في دار louey's Design نؤمن بأن كل امرأة هي قطعة فنية مميزة تستحق تصميماً يُبرز فخامتها وأنوثتها.",
+        footer_rights: "جميع الحقوق محفوظة ©", modal_payment_title: "إتمام طلب الفستان", price_label: "السعر:",
+        iban_msg: "يرجى تحويل المبلغ بالدولار الأمريكي (USD) إلى حساب الآيبان الخاص بالدار:",
+        btn_copy: "نسخ", required_amount: "المبلغ المطلوب للتحويل:", btn_confirm_wa: "تأكيد الطلب وإرسال التحويل عبر الواتساب",
+        tag_exclusive: "تصميم حصري", label_choose_size: "اختاري المقاس المناسب:", size_custom: "مقاس خاص",
+        label_color: "اللون المختار:", color_original: "اللون الأصلي كما بالصورة", btn_proceed_order: "الانتقال لإتمام الطلب والتحويل",
+        btn_consult_wa_modal: "استشارة المصمم مباشرة حول هذا الفستان", photos_count_suffix: "صور",
+        admin_toolbar_title: "وضع المالك مفعل — التغييرات تحفظ في السحابة فوراً ويراها الجميع",
+        admin_settings_btn: "إعدادات الموقع ورفع الصور", admin_logout_btn: "تسجيل الخروج",
+        no_results: "لا توجد أي فساتين معروضة حالياً."
+      },
+      en: {
+        nav_home: "Home", nav_gallery: "Mega Gallery", nav_features: "Features", nav_about: "About Us", nav_contact: "Contact Us",
+        btn_share: "Share Link", hero_tag: "LUXURY EVENING DRESSES HOUSE", hero_subtitle: '"Dress like royalty.. Designs touching your soul and highlighting your charm for every occasion."',
+        btn_explore: "Explore Full Gallery Now", btn_consultation: "Private Consultation & Fitting via WhatsApp",
+        feat_custom_size_title: "Custom Tailoring to Size", feat_custom_size_desc: "Click here to book your measurements and chat directly with our tailor via WhatsApp",
+        feat_consultation_title: "Private Fashion Consultation", feat_consultation_desc: "Get personalized styling advice to pick the ideal dress for your occasion via WhatsApp",
+        click_to_wa: "Contact via WhatsApp", section_gallery_title: "Mega Exclusive Showcase Collection",
+        section_gallery_desc: "Browse hundreds of haute couture pieces. Click any item for all gallery photos.",
+        btn_add_dress_quick: "Add New Dress or Upload Hundreds of Photos Bulk", btn_view_details: "View Details & Gallery",
+        why_choose_title: "Why Choose louey's Design?", why_choose_subtitle: "We care about the finest details so you shine as a beauty icon",
+        why_card1_title: "Luxurious Fabrics & Materials", why_card1_desc: "We import natural silk, French lace, and royal velvet from top suppliers ensuring distinguished luxury.",
+        why_card2_title: "Tailored Adjustments & Consultation", why_card2_desc: "Our design team offers guidance and dress alterations for a perfect fit via WhatsApp.",
+        why_card3_title: "Royal Safe Packaging", why_card3_desc: "Your dress arrives in an exquisite box with complete embroidery protection.",
+        about_title: "About louey's Design", about_desc: "At louey's Design, we believe every woman deserves a masterpiece tailored to highlight her elegance.",
+        footer_rights: "All rights reserved ©", modal_payment_title: "Complete Dress Order", price_label: "Price:",
+        iban_msg: "Please transfer the amount in USD to the following IBAN:",
+        btn_copy: "Copy", required_amount: "Required Transfer Amount:", btn_confirm_wa: "Confirm Order via WhatsApp",
+        tag_exclusive: "EXCLUSIVE DESIGN", label_choose_size: "Choose Suitable Size:", size_custom: "Custom Size",
+        label_color: "Selected Color:", color_original: "Original Color as Shown", btn_proceed_order: "Proceed to Complete Order & Transfer",
+        btn_consult_wa_modal: "Consult Designer Directly About This Dress", photos_count_suffix: "Photos",
+        admin_toolbar_title: "Owner Mode Active — Changes synced to cloud for everyone instantly",
+        admin_settings_btn: "Site Settings & Password", admin_logout_btn: "Log Out",
+        no_results: "No dresses currently displayed."
+      },
+      tr: {
+        nav_home: "Ana Sayfa", nav_gallery: "Geniş Galeri", nav_features: "Özellikler", nav_about: "Hakkımızda", nav_contact: "İletişim",
+        btn_share: "Bağlantıyı Paylaş", hero_tag: "LÜKS GECE ELBİSELERİ EVİ", hero_subtitle: '"Kraliçeler gibi giyinin.. Ruhunuza dokunan ve her ortamda ışıltınızı öne çıkaran tasarımlar."',
+        btn_explore: "Geniş Galeriyi Şimdi İnceleyin", btn_consultation: "WhatsApp Üzerinden Özel Danışmanlık ve Beden Randevusu",
+        feat_custom_size_title: "Kişiye Özel Beden Dikimi", feat_custom_size_desc: "Beden ölçülerinizi iletmek ve terzimizle doğrudan WhatsApp üzerinden görüşmek için tıklayın",
+        feat_consultation_title: "Özel Moda Danışmanlığı", feat_consultation_desc: "Özel gününüz için en uygun elbiseyi seçmek üzere WhatsApp üzerinden kişisel danışmanlık alın",
+        click_to_wa: "WhatsApp İle İletişime Geçin", section_gallery_title: "Geniş Özel Gece Elbisesi Koleksiyonu",
+        section_gallery_desc: "Yüzlerce haute couture parçayı inceleyin. Fotoğrafları görmek için tıklayın.",
+        btn_add_dress_quick: "Yeni Elbise Veya Toplu Fotoğraflar Yükle", btn_view_details: "Detayları ve Fotoğrafları Gör",
+        why_choose_title: "Neden louey's Design?", why_choose_subtitle: "Her ortamda bir güzellik ikonu olmanız için en ince detaylara önem veriyoruz",
+        why_card1_title: "Lüks Kumaşlar ve Malzemeler", why_card1_desc: "Eşsiz bir şıklık için doğal ipek, Fransız danteli ve kraliyet kadifesini ithal ediyoruz.",
+        why_card2_title: "Özel Ölçü ve Danışmanlık", why_card2_desc: "Tasarım ekibimiz WhatsApp üzerinden elbisenizin vücudunuza tam oturması için destek sunar.",
+        why_card3_title: "Kraliyet Tipi Güvenli Paketleme", why_card3_desc: "Elbiseniz nakış korumalı lüks kutusunda tarafınıza teslim edilir.",
+        about_title: "louey's Design Hakkında", about_desc: "louey's Design olarak her kadının zarafetini ortaya çıkaracak özel bir tasarımı hak ettiğine inanıyoruz.",
+        footer_rights: "Tüm hakları saklıdır ©", modal_payment_title: "Siparişi Tamamla", price_label: "Fiyat:",
+        iban_msg: "Lütfen tutarı USD cinsinden aşağıdaki IBAN adresine gönderin:",
+        btn_copy: "Kopyala", required_amount: "Gerekli Transfer Tutarı:", btn_confirm_wa: "WhatsApp ile Siparişi Onayla",
+        tag_exclusive: "ÖZEL TASARIM", label_choose_size: "Uygun Bedeni Seçin:", size_custom: "Özel Beden",
+        label_color: "Seçilen Renk:", color_original: "Görseldeki Orijinal Renk", btn_proceed_order: "Siparişi Tamamlamaya Geçin",
+        btn_consult_wa_modal: "Bu Elbise Hakkında Doğrudan Tasarımcıya Danışın", photos_count_suffix: "Fotoğraf",
+        admin_toolbar_title: "Yönetici Modu Aktif — Tüm değişiklikler anında bulutla senkronize edilir",
+        admin_settings_btn: "Site Ayarları ve Şifre", admin_logout_btn: "Çıkış Yap",
+        no_results: "Şu anda gösterilecek elbise bulunmamaktadır."
+      }
+    };
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const data = i18nData[lang] || i18nData.ar;
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) el.textContent = data[key];
+      });
+
+      document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+
+      ['ar','en','tr'].forEach(l => {
+        const b = document.getElementById(`lang-${l}`);
+        if(b) b.className = l === lang ? "px-2.5 py-1 rounded-full text-gold-400 font-bold transition" : "px-2.5 py-1 rounded-full text-gray-400 transition";
+      });
+
+      renderData();
+    }
+
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    function getDressField(fieldObj) {
+      if (typeof fieldObj === 'object' && fieldObj !== null) {
+        return fieldObj[currentLang] || fieldObj['ar'] || fieldObj['en'] || '';
+      }
+      return fieldObj || '';
+    }
+
+    function safeCreateDressCard(dress) {
+      const card = document.createElement('div');
+      card.className = "bg-dark-900 rounded-xl overflow-hidden border border-dark-800 hover:border-gold-600/40 transition-all duration-300 flex flex-col justify-between group shadow-lg hover:-translate-y-1 relative cursor-pointer";
+      card.onclick = () => openDressDetailModal(dress.id);
+
+      const imgWrap = document.createElement('div');
+      imgWrap.className = "relative overflow-hidden h-72 sm:h-80 md:h-96 bg-dark-950 flex items-center justify-center";
+      
+      const img = document.createElement('img');
+      img.src = dress.image || 'https://via.placeholder.com/800x1000?text=loueys+Design';
+      img.alt = getDressField(dress.title);
+      img.loading = 'lazy';
+      img.className = "max-h-full max-w-full object-contain group-hover:scale-105 transition duration-700";
+      img.onerror = function() { this.src = 'https://via.placeholder.com/800x1000?text=loueys+Design'; };
+      
+      const overlay = document.createElement('div');
+      overlay.className = "absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent pointer-events-none";
+      
+      const priceBadge = document.createElement('span');
+      priceBadge.className = "absolute top-3 left-3 bg-dark-950/80 backdrop-blur-md text-gold-400 font-bold px-2.5 py-1 rounded-full text-[11px] border border-gold-500/30 tracking-wider z-20";
+      priceBadge.textContent = `$${dress.price} USD`;
+
+      const photosBadge = document.createElement('span');
+      photosBadge.className = "absolute bottom-3 right-3 bg-black/70 text-gray-300 text-[10px] px-2 py-0.5 rounded-full border border-gold-500/20 flex items-center gap-1 z-20";
+      const imgCount = (dress.images && dress.images.length) ? dress.images.length : 1;
+      const photosSuffix = i18nData[currentLang]?.photos_count_suffix || 'صور';
+      photosBadge.innerHTML = `<i class="fa-solid fa-camera text-gold-400 text-[9px]"></i> ${imgCount} ${photosSuffix}`;
+
+      if (adminLoggedIn) {
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = "absolute top-3 right-3 bg-red-600 hover:bg-red-700 text-white font-bold p-2 rounded-full shadow-2xl transition flex items-center justify-center z-30 text-xs border border-red-400/50";
+        deleteBtn.title = "حذف الفستان نهائياً من السحابة";
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        deleteBtn.onclick = (e) => {
+          e.stopPropagation();
+          deleteDressCloud(dress.id);
+        };
+        imgWrap.appendChild(deleteBtn);
+      }
+
+      imgWrap.appendChild(img);
+      imgWrap.appendChild(overlay);
+      imgWrap.appendChild(priceBadge);
+      imgWrap.appendChild(photosBadge);
+
+      const content = document.createElement('div');
+      content.className = "p-4 space-y-2 flex-grow flex flex-col justify-between";
+
+      const title = document.createElement('h3');
+      title.className = "serif-title text-base sm:text-lg font-bold text-white mb-1 group-hover:text-gold-400 transition line-clamp-1";
+      title.textContent = getDressField(dress.title);
+
+      const desc = document.createElement('p');
+      desc.className = "text-gray-400 text-[11px] leading-relaxed line-clamp-2";
+      desc.textContent = getDressField(dress.description);
+
+      const btn = document.createElement('button');
+      btn.className = "w-full mt-2 bg-dark-800 hover:bg-gold-500 text-gold-400 hover:text-dark-950 border border-gold-600/40 font-bold py-2 rounded-lg transition duration-300 text-xs flex items-center justify-center gap-1 shadow";
+      const btnText = i18nData[currentLang]?.btn_view_details || 'مشاهدة التفاصيل والصور';
+      btn.innerHTML = `<i class="fa-solid fa-eye text-[10px]"></i> ${btnText}`;
+
+      content.appendChild(title);
+      content.appendChild(desc);
+      content.appendChild(btn);
+
+      card.appendChild(imgWrap);
+      card.appendChild(content);
+      return card;
+    }
+
+    function renderDressesList() {
+      const grid = document.getElementById('dressesGrid');
+      const noRes = document.getElementById('noResultsMsg');
+      grid.innerHTML = '';
+
+      let dressesList = window.appData.dresses || [];
+
+      if (dressesList.length === 0) {
+        noRes.classList.remove('hidden');
+      } else {
+        noRes.classList.add('hidden');
+        dressesList.forEach(d => grid.appendChild(safeCreateDressCard(d)));
+      }
+    }
+
+    window.renderData = function() {
+      document.getElementById('siteBrand').textContent = window.appData.siteTitle || "louey's Design";
+      document.getElementById('heroTitle').textContent = window.appData.siteTitle || "louey's Design";
+      document.getElementById('displayIban').textContent = window.appData.iban || '';
+
+      if (window.appData.bgUrl) {
+        document.getElementById('dynamicBgOverlay').style.backgroundImage = `url('${window.appData.bgUrl}')`;
+      } else {
+        document.getElementById('dynamicBgOverlay').style.backgroundImage = 'none';
+      }
+
+      const cleanWa = (window.appData.whatsapp || '').replace(/[^0-9]/g, '');
+      const waConsultationMsg = encodeURIComponent(currentLang === 'en' ? "Hello louey's Design, I'd like a private consultation & custom fitting." : currentLang === 'tr' ? "Merhaba louey's Design, özel tasarım ve beden randevusu almak istiyorum." : "مرحباً دار louey's Design، أود حجز استشارة خاصة وتحديد المقاسات.");
+      const waCustomSizeMsg = encodeURIComponent(currentLang === 'en' ? "Hello, I want to request a custom-fit dress tailoring." : currentLang === 'tr' ? "Merhaba, özel ölçülerime göre elbise dikimi talep etmek istiyorum." : "مرحباً، أرغب في تقديم طلب تفصيل فستان حسب مقاساتي الخاصة.");
+      
+      document.getElementById('designerConsultationBtn').href = `https://wa.me/${cleanWa}?text=${waConsultationMsg}`;
+      document.getElementById('featureCustomSizeBtn').href = `https://wa.me/${cleanWa}?text=${waCustomSizeMsg}`;
+      document.getElementById('featureConsultationBtn').href = `https://wa.me/${cleanWa}?text=${waConsultationMsg}`;
+
+      document.getElementById('socialWhatsapp').href = `https://wa.me/${cleanWa}`;
+      document.getElementById('socialInstagram').href = window.appData.instagram || '#';
+      document.getElementById('socialFacebook').href = window.appData.facebook || '#';
+
+      const toolbar = document.getElementById('adminToolbar');
+      const quickAdd = document.getElementById('quickAddDressBtn');
+      if (adminLoggedIn) {
+        toolbar.classList.remove('hidden');
+        quickAdd.classList.remove('hidden');
+      } else {
+        toolbar.classList.add('hidden');
+        quickAdd.classList.add('hidden');
+      }
+
+      renderDressesList();
+
+      document.getElementById('settingSiteTitle').value = window.appData.siteTitle || '';
+      document.getElementById('settingSubtitle').value = window.appData.subtitle || '';
+      document.getElementById('settingIban').value = window.appData.iban || '';
+      document.getElementById('settingWhatsapp').value = window.appData.whatsapp || '';
+      document.getElementById('settingInstagram').value = window.appData.instagram || '';
+      document.getElementById('settingFacebook').value = window.appData.facebook || '';
+      document.getElementById('settingBgUrl').value = window.appData.bgUrl || '';
+    };
+
+    function openDressDetailModal(dressId) {
+      selectedDress = (window.appData.dresses || []).find(x => String(x.id) === String(dressId));
+      if (!selectedDress) return;
+
+      document.getElementById('modalDetailTitle').textContent = getDressField(selectedDress.title);
+      document.getElementById('modalDetailPrice').textContent = `$${selectedDress.price} USD`;
+      document.getElementById('modalDetailDesc').textContent = getDressField(selectedDress.description) || 'فستان سهرة فاخر مصمم بأجود الخامات العالمية.';
+
+      const mainImg = document.getElementById('modalMainImg');
+      const allImgs = (selectedDress.images && selectedDress.images.length > 0) ? selectedDress.images : [selectedDress.image];
+      mainImg.src = allImgs[0];
+
+      const thumbsContainer = document.getElementById('modalThumbnails');
+      thumbsContainer.innerHTML = '';
+      allImgs.forEach((imgUrl, idx) => {
+        const thumb = document.createElement('img');
+        thumb.src = imgUrl;
+        thumb.className = `w-14 h-16 sm:w-16 sm:h-20 object-contain bg-black/80 rounded-lg cursor-pointer border-2 transition ${idx === 0 ? 'border-gold-500 scale-95' : 'border-dark-700 opacity-70 hover:opacity-100'}`;
+        thumb.onclick = () => {
+          mainImg.src = imgUrl;
+          Array.from(thumbsContainer.children).forEach(c => c.className = "w-14 h-16 sm:w-16 sm:h-20 object-contain bg-black/80 rounded-lg cursor-pointer border-2 border-dark-700 opacity-70 hover:opacity-100 transition");
+          thumb.className = "w-14 h-16 sm:w-16 sm:h-20 object-contain bg-black/80 rounded-lg cursor-pointer border-2 border-gold-500 scale-95 transition";
+        };
+        thumbsContainer.appendChild(thumb);
+      });
+
+      const cleanWa = (window.appData.whatsapp || '').replace(/[^0-9]/g, '');
+      const dressTitleText = getDressField(selectedDress.title);
+      const detailWaMsg = encodeURIComponent(currentLang === 'en' ? `Hello louey's Design, I'd like to inquire about the dress (${dressTitleText}).` : currentLang === 'tr' ? `Merhaba louey's Design, (${dressTitleText}) elbisesi hakkında bilgi almak istiyorum.` : `مرحباً دار louey's Design، أود الاستفسار عن فستان (${dressTitleText}).`);
+      document.getElementById('modalDetailWaBtn').href = `https://wa.me/${cleanWa}?text=${detailWaMsg}`;
+
+      document.getElementById('dressDetailModal').classList.remove('hidden');
+    }
+
+    function closeDressDetailModal() {
+      document.getElementById('dressDetailModal').classList.add('hidden');
+    }
+
+    function selectSize(size, btn) {
+      selectedSize = size;
+      document.querySelectorAll('.size-btn').forEach(b => {
+        b.className = "size-btn px-3 py-1.5 rounded-lg border border-dark-700 bg-dark-950 text-gray-300 hover:border-gold-500";
+      });
+      btn.className = "size-btn px-3 py-1.5 rounded-lg border border-gold-500 bg-gold-600/20 text-gold-400 font-bold";
+    }
+
+    function proceedToPaymentFromDetail() {
+      closeDressDetailModal();
+      openPaymentModal(selectedDress.id);
+    }
+
+    function openPaymentModal(dressId) {
+      selectedDress = (window.appData.dresses || []).find(x => String(x.id) === String(dressId));
+      if (!selectedDress) return;
+
+      const dressTitleText = getDressField(selectedDress.title);
+      document.getElementById('modalDressTitle').textContent = dressTitleText;
+      document.getElementById('modalDressPrice').textContent = selectedDress.price;
+      document.getElementById('ibanDressPrice').textContent = selectedDress.price;
+      
+      const sizeLabel = currentLang === 'en' ? 'Selected Size' : currentLang === 'tr' ? 'Seçilen Beden' : 'المقاس المختار';
+      document.getElementById('selectedSizeDisplay').textContent = `${sizeLabel}: ${selectedSize}`;
+
+      const cleanWa = (window.appData.whatsapp || '').replace(/[^0-9]/g, '');
+      const waMsg = encodeURIComponent(currentLang === 'en' ? `Hello louey's Design, I'd like to order the dress (${dressTitleText}) size (${selectedSize}) priced $${selectedDress.price} USD.` : currentLang === 'tr' ? `Merhaba louey's Design, (${dressTitleText}) elbisesini (${selectedSize}) bedeninde $${selectedDress.price} USD tutarında sipariş etmek istiyorum.` : `مرحباً دار louey's Design، أرغب في طلب الفستان (${dressTitleText}) بالمقاس (${selectedSize}) وقيمته $${selectedDress.price} USD بعد إتمام التحويل.`);
+      document.getElementById('whatsappIbanBtn').href = `https://wa.me/${cleanWa}?text=${waMsg}`;
+
+      document.getElementById('paymentModal').classList.remove('hidden');
+    }
+
+    function closePaymentModal() { document.getElementById('paymentModal').classList.add('hidden'); }
+
+    function copyIban() {
+      const text = window.appData.iban || '';
+      if (!text) return;
+      navigator.clipboard?.writeText(text);
+      const msg = currentLang === 'en' ? 'IBAN copied: ' : currentLang === 'tr' ? 'IBAN kopyalandı: ' : 'تم نسخ رقم IBAN: ';
+      alert(msg + text);
+    }
+
+    function shareWebsiteLink() {
+      if (navigator.share) {
+        navigator.share({ title: window.appData.siteTitle, url: window.location.href });
+      } else {
+        navigator.clipboard?.writeText(window.location.href);
+        const msg = currentLang === 'en' ? 'Website link copied!' : currentLang === 'tr' ? 'Site bağlantısı kopyalandı!' : 'تم نسخ رابط الموقع بنجاح!';
+        alert(msg);
+      }
+    }
+
+    function handleSecretClick() {
+      window._secretClicks = (window._secretClicks || 0) + 1;
+      if (window._secretClicks >= 5) {
+        window._secretClicks = 0;
+        openAdminModal(false);
+      }
+    }
+
+    function openAdminModal(forceDashboard = false) {
+      const modal = document.getElementById('adminModal');
+      const loginView = document.getElementById('adminLoginView');
+      const dashView = document.getElementById('adminDashboardView');
+
+      modal.classList.remove('hidden');
+
+      if (adminLoggedIn || forceDashboard) {
+        loginView.classList.add('hidden');
+        dashView.classList.remove('hidden');
+      } else {
+        loginView.classList.remove('hidden');
+        dashView.classList.add('hidden');
+      }
+    }
+
+    function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
+
+    function handleAdminLogin(evt) {
+      evt.preventDefault();
+      const pass = document.getElementById('adminPassInput').value.trim();
+      if (!pass) return;
+
+      if (pass === window.savedPass) {
+        adminLoggedIn = true;
+        document.getElementById('adminPassInput').value = '';
+        document.getElementById('adminErrorMsg').classList.add('hidden');
+        closeAdminModal();
+        renderData();
+      } else {
+        document.getElementById('adminErrorMsg').classList.remove('hidden');
+      }
+    }
+
+    function logoutAdmin() {
+      adminLoggedIn = false;
+      renderData();
+    }
+
+    // Cloud Firestore Delete
+    async function deleteDressCloud(id) {
+      if (!confirm('هل أنت متأكد من حذف هذا الفستان نهائياً من السحابة؟')) return;
+      try {
+        const { doc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+        const dressDocRef = doc(window.db, 'artifacts', window.appId, 'public', 'data', 'dresses', String(id));
+        await deleteDoc(dressDocRef);
+      } catch (err) {
+        console.error("Delete Error:", err);
+      }
+    }
+
+    // Bulk Upload Images with Automatic Compression
+    async function handleBulkImagesUpload(e) {
+      const files = Array.from(e.target.files);
+      if (files.length === 0) return;
+
+      const statusEl = document.getElementById('uploadStatusText');
+      statusEl.classList.remove('hidden');
+      statusEl.textContent = `جاري ضغط ورفع ${files.length} صورة للسحابة... برجاء الانتظار قليلاً`;
+
+      const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+
+      let addedCount = 0;
+      for (let index = 0; index < files.length; index++) {
+        const file = files[index];
+        try {
+          const compressedBase64 = await compressImageFile(file, 900, 1200, 0.65);
+          const dressId = "dress_" + (Date.now() + index);
+
+          const newDress = {
+            title: {
+              ar: `فستان سهرة حصري #${dressId.slice(-4)}`,
+              en: `Exclusive Gown #${dressId.slice(-4)}`,
+              tr: `Özel Tasarım Elbise #${dressId.slice(-4)}`
+            },
+            price: 450 + (index % 5) * 50,
+            image: compressedBase64,
+            images: [compressedBase64],
+            description: {
+              ar: "تصميم ملوكي فاخر مصمم بالكامل بأجود الخامات والتطريز اليدوي.",
+              en: "Luxurious haute couture gown crafted with fine materials and hand embroidery.",
+              tr: "El işlemeli ve özel kumaştan üretilmiş lüks tasarım."
+            },
+            createdAt: Date.now() + index
+          };
+
+          const dressDocRef = doc(window.db, 'artifacts', window.appId, 'public', 'data', 'dresses', dressId);
+          await setDoc(dressDocRef, newDress);
+          addedCount++;
+          statusEl.textContent = `تم رفع ${addedCount} من أصل ${files.length} صورة...`;
+        } catch (err) {
+          console.error("Bulk upload item error:", err);
+        }
+      }
+
+      statusEl.classList.add('hidden');
+      alert(`تم ضغط ورفع ${addedCount} صورة بنجاح إلى السحابة!`);
+    }
+
+    // Single Dress File Selection
+    async function handleDressMultiFilesSelect(e) {
+      const files = Array.from(e.target.files);
+      if (files.length === 0) return;
+
+      const fileNameLabel = document.getElementById('selectedFileName');
+      fileNameLabel.textContent = `جاري ضغط وتجهيز ${files.length} صور...`;
+
+      tempDressImagesBase64 = [];
+      for (let file of files) {
+        try {
+          const compressed = await compressImageFile(file, 900, 1200, 0.65);
+          tempDressImagesBase64.push(compressed);
+        } catch (err) {
+          console.error("Compression error:", err);
+        }
+      }
+      fileNameLabel.textContent = `تم ضغط وتجهيز ${tempDressImagesBase64.length} صور بنجاح وجاهزة للحفظ!`;
+    }
+
+    // Add Single Detailed Dress to Cloud
+    async function addNewDress() {
+      const titleAr = document.getElementById('newDressNameAr').value.trim();
+      const titleEn = document.getElementById('newDressNameEn').value.trim();
+      const titleTr = document.getElementById('newDressNameTr').value.trim();
+      const priceVal = parseFloat(document.getElementById('newDressPrice').value) || 500;
+      
+      const descAr = document.getElementById('newDressDescAr').value.trim();
+      const descEn = document.getElementById('newDressDescEn').value.trim();
+      const descTr = document.getElementById('newDressDescTr').value.trim();
+      const directUrl = document.getElementById('newDressImage').value.trim();
+
+      if (!titleAr && !titleEn) {
+        alert('يرجى إدخال اسم الفستان على الأقل.');
+        return;
+      }
+
+      let finalImages = [];
+      if (tempDressImagesBase64.length > 0) {
+        finalImages = [...tempDressImagesBase64];
+      } else if (directUrl) {
+        finalImages = [directUrl];
+      } else {
+        finalImages = ['https://via.placeholder.com/800x1000?text=loueys+Design'];
+      }
+
+      const dressId = "dress_" + Date.now();
+      const dressData = {
+        title: {
+          ar: titleAr || "فستان سهرة ملكي",
+          en: titleEn || "Royal Evening Gown",
+          tr: titleTr || "Kraliyet Gece Elbisesi"
+        },
+        price: priceVal,
+        image: finalImages[0],
+        images: finalImages,
+        description: {
+          ar: descAr || "فستان سهرة راقي بتصميم هوت كوتور فريد.",
+          en: descEn || "Sophisticated evening gown with unique haute couture design.",
+          tr: descEn || "Benzersiz haute couture tasarımlı lüks gece elbisesi."
+        },
+        createdAt: Date.now()
+      };
+
+      try {
+        const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+        const dressDocRef = doc(window.db, 'artifacts', window.appId, 'public', 'data', 'dresses', dressId);
+        await setDoc(dressDocRef, dressData);
+
+        // Reset inputs
+        document.getElementById('newDressNameAr').value = '';
+        document.getElementById('newDressNameEn').value = '';
+        document.getElementById('newDressNameTr').value = '';
+        document.getElementById('newDressPrice').value = '';
+        document.getElementById('newDressDescAr').value = '';
+        document.getElementById('newDressDescEn').value = '';
+        document.getElementById('newDressDescTr').value = '';
+        document.getElementById('newDressImage').value = '';
+        document.getElementById('selectedFileName').textContent = '';
+        tempDressImagesBase64 = [];
+
+        alert('تم حفظ الفستان بنجاح في السحابة ولجميع المستخدمين!');
+      } catch (err) {
+        console.error("Error saving dress:", err);
+        alert('حدث خطأ أثناء الحفظ في السحابة.');
+      }
+    }
+
+    // Save General Settings to Cloud
+    async function saveGeneralSettings() {
+      const siteTitle = document.getElementById('settingSiteTitle').value.trim();
+      const subtitle = document.getElementById('settingSubtitle').value.trim();
+      const iban = document.getElementById('settingIban').value.trim();
+      const whatsapp = document.getElementById('settingWhatsapp').value.trim();
+      const instagram = document.getElementById('settingInstagram').value.trim();
+      const facebook = document.getElementById('settingFacebook').value.Tr;
+      const bgUrl = document.getElementById('settingBgUrl').value.trim();
+
+      try {
+        const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+        const settingsDocRef = doc(window.db, 'artifacts', window.appId, 'public', 'data', 'site_config', 'main_config');
+        
+        await setDoc(settingsDocRef, {
+          siteTitle, subtitle, iban, whatsapp, instagram, facebook: document.getElementById('settingFacebook').value.trim(), bgUrl, adminPass: window.savedPass
+        }, { merge: true });
+
+        alert('تم حفظ الإعدادات بنجاح في السحابة!');
+      } catch (err) {
+        console.error("Error saving settings:", err);
+      }
+    }
+
+    // Background Image Upload & Compress
+    async function handleBgFileUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const compressed = await compressImageFile(file, 1200, 800, 0.6);
+        document.getElementById('settingBgUrl').value = compressed;
+        alert('تم ضغط وتحميل خلفية الموقع بنجاح. اضغط حفظ سحابي عام لتطبيقها.');
+      } catch (err) {
+        console.error("Bg upload error:", err);
+      }
+    }
+
+    // Change Admin Password
+    async function changeAdminPassword() {
+      const oldPass = document.getElementById('oldPasswordInput').value.trim();
+      const newPass = document.getElementById('newPasswordInput').value.trim();
+
+      if (oldPass !== window.savedPass) {
+        alert('كلمة السر الحالية غير صحيحة!');
+        return;
+      }
+      if (!newPass || newPass.length < 4) {
+        alert('كلمة السر الجديدة يجب أن تكون 4 أحرف على الأقل.');
+        return;
+      }
+
+      window.savedPass = newPass;
+      document.getElementById('oldPasswordInput').value = '';
+      document.getElementById('newPasswordInput').value = '';
+
+      await saveGeneralSettings();
+      alert('تم تحديث كلمة السر بنجاح في السحابة!');
+    }
+  </script>
+</body>
+</html>
+
